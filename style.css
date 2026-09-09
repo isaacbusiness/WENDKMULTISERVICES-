@@ -44,6 +44,23 @@ nav a{
     margin-left:20px;
     font-size:16px;
 }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    object-fit:contain;
+}
+
+.logo span{
+    color:#00c8ff;
+    font-size:22px;
+    font-weight:bold;
+}
 
 
 /* HERO */
