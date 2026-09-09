@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WENDK SHOP - Téléphones et accessoires au Burkina Faso.">
+  <meta name="theme-color" content="#111827">
+  <title>WENDK SHOP | Téléphones & Accessoires</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="logo" onclick="showHome(); return false;">
+        <span>W</span> WENDK <strong>SHOP</strong>
+      </a>
+      <div class="search-wrap">
+        <input id="searchInput" type="search" placeholder="Rechercher un téléphone, accessoire..." aria-label="Rechercher">
+        <button onclick="searchProducts()" aria-label="Rechercher">🔎</button>
+      </div>
+      <nav class="desktop-nav">
+        <a href="#products">Boutique</a>
+        <a href="#categories">Catégories</a>
+        <button class="cart-btn" onclick="openCart()">🛒 Panier <b id="cartCount">0</b></button>
+      </nav>
+      <button class="mobile-cart" onclick="openCart()">🛒 <b id="cartCountMobile">0</b></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div>
+          <p class="eyebrow">WENDK MULTISERVICES</p>
+          <h1>Votre technologie,<br><span>simplement.</span></h1>
+          <p class="hero-text">Découvrez nos smartphones et accessoires sélectionnés au meilleur rapport qualité-prix.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#products">Acheter maintenant</a>
+            <a class="btn light" href="#categories">Voir les catégories</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="phone-icon">📱</div>
+          <p>Smartphones & accessoires</p>
+          <strong>Commandez facilement</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Explorer</p><h2>Nos catégories</h2></div>
+          <button class="link-btn" onclick="filterCategory('Tous')">Tout voir →</button>
+        </div>
+        <div id="categoryGrid" class="category-grid"></div>
+      </div>
+    </section>
+
+    <section id="products" class="section products-section">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="eyebrow">Notre catalogue</p><h2>Produits disponibles</h2></div>
+          <select id="sortSelect" onchange="sortProducts()" aria-label="Trier les produits">
+            <option value="featured">Populaires</option>
+            <option value="priceAsc">Prix croissant</option>
+            <option value="priceDesc">Prix décroissant</option>
+            <option value="newest">Nouveautés</option>
+          </select>
+        </div>
+        <div id="productGrid" class="product-grid"></div>
+        <p id="emptyState" class="empty hidden">Aucun produit ne correspond à votre recherche.</p>
+      </div>
+    </section>
+
+    <section class="trust section">
+      <div class="container trust-grid">
+        <div>🚚 <strong>Livraison</strong><span>Selon votre zone</span></div>
+        <div>💳 <strong>Paiement</strong><span>Solutions adaptées</span></div>
+        <div>📲 <strong>WhatsApp</strong><span>Commande rapide</span></div>
+        <div>🛡️ <strong>Assistance</strong><span>Avant et après-vente</span></div>
+      </div>
+    </section>
+
+    <section class="cta section">
+      <div class="container cta-box">
+        <div><p class="eyebrow">Besoin d'aide ?</p><h2>Parlez à WENDK sur WhatsApp</h2><p>Une question sur un produit ou une commande ? Notre équipe vous répond.</p></div>
+        <button class="btn primary" onclick="contactWhatsApp()">💬 Contacter WENDK</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><a class="logo" href="#"><span>W</span> WENDK <strong>SHOP</strong></a><p>Votre technologie, simplement.</p></div>
+      <div><h3>Navigation</h3><a href="#products">Boutique</a><a href="#categories">Catégories</a></div>
+      <div><h3>Contact</h3><p>Burkina Faso</p><button class="footer-wa" onclick="contactWhatsApp()">WhatsApp</button></div>
+    </div>
+    <div class="copyright">© <span id="year"></span> WENDK SHOP — Tous droits réservés.</div>
+  </footer>
+
+  <div id="cartOverlay" class="overlay hidden" onclick="closeCart(event)">
+    <aside class="cart-panel" onclick="event.stopPropagation()">
+      <div class="cart-head"><h2>Votre panier</h2><button onclick="closeCart()">✕</button></div>
+      <div id="cartItems"></div>
+      <div class="cart-bottom">
+        <div class="total"><span>Total</span><strong id="cartTotal">0 FCFA</strong></div>
+        <button class="btn primary full" onclick="checkoutWhatsApp()">Commander via WhatsApp</button>
+        <button class="btn secondary full" onclick="clearCart()">Vider le panier</button>
+      </div>
+    </aside>
+  </div>
+
+  <div id="productModal" class="overlay hidden" onclick="closeProduct(event)">
+    <div class="product-modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeProduct()">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
